@@ -13,10 +13,10 @@ int main(void) {
 int arr[] = {10,5,6,1,19,12,3,15,20,7,10,5,6,1,19,12,3,15,20};
 printf("\033[?25l");
 
-sort(arr, 0, 19);
+sort(arr, 0, 18);
  
 printArray(arr, 19, -1, -1, -1, 18, 0);
-printf("\033{?25h");
+printf("\033[?25h");
 
 }
 
@@ -29,7 +29,7 @@ void swap(int arr[], int index1, int index2) {
 
 void sort(int* arr, int low, int high) {
     
-    if (high - low < 2) return;
+    if (high - low +1 < 2) return;
     printf("\033[1;1H\033[K");
     printf("length: %d\n", LENGTH);
 
@@ -50,7 +50,7 @@ int partition(int arr[], int low, int high) {
     int pivot = arr[(low + high)/2];
     printf("\033[1;14H\033[K");
 
-    printf("pivot: | |\n");
+    printf("pivot: \033[33m%d\033[0m\n", pivot);
 
     int r = high +1 ;
     int l = low -1;
