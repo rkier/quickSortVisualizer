@@ -15,7 +15,7 @@ printf("\033[?25l");
 
 sort(arr, 0, 18);
  
-printArray(arr, 19, -1, -1, -1, 18, 0);
+printArray(arr, LENGTH, -1, -1, -1, 18, 0);
 printf("\033[?25h");
 
 }
@@ -24,7 +24,6 @@ void swap(int arr[], int index1, int index2) {
     int temp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = temp;
-    //printf("swapped %d with %d\n", arr[index1], arr[index2]);
 }
 
 void sort(int* arr, int low, int high) {
@@ -34,15 +33,8 @@ void sort(int* arr, int low, int high) {
     printf("length: %d\n", LENGTH);
 
     int split = partition(arr, low, high);
-
-    
-
         sort(arr, low, split);
-    
-    
         sort(arr, split + 1, high);
-    
-
 }
 
 int partition(int arr[], int low, int high) {
@@ -90,10 +82,8 @@ int partition(int arr[], int low, int high) {
             sleep(1);
             printf("\033[2;1H\033[K");
 
-
             if (arr[l] != arr[r]) swap(arr, l, r);
-           
-            
+                
         } else {
             printf("\033[3;1H\033[K");
             printf("crossed l: %d r: %d\n", arr[l], arr[r]);
@@ -102,12 +92,10 @@ int partition(int arr[], int low, int high) {
             printArray(arr,LENGTH, l, r, pivot, high, low);
 
             break;
-        }
-        
+        }   
     }
     return r;
 }
-
 
 void printArray(int arr[], int length, int l, int r, int pivot, int high, int low) {
     printf("\033[4;1H\033[K");
@@ -141,7 +129,6 @@ void printArray(int arr[], int length, int l, int r, int pivot, int high, int lo
                 } else {
                     printf("\033[37m %d \033[0m", arr[i]);
                 }
-              
             }
         }
     }
